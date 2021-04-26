@@ -1,7 +1,6 @@
 <?php
 
 $file = fopen('file.txt', 'r');
-$stdout = fopen('php://stdout', 'w');
 
 $int = '';
 while (!feof($file)) {
@@ -10,10 +9,9 @@ while (!feof($file)) {
     if (is_numeric($char)) {
         $int .= $char;
     } elseif (!empty($int)) {
-        fwrite($stdout, $int . PHP_EOL);
+        echo $int . PHP_EOL;
         $int = '';
     }
 }
 
 fclose($file);
-fclose($stdout);
